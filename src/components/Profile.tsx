@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Content = () => {
+export const Profile = () => {
     return (
         <div className="content">
             <div className={'photo'}>

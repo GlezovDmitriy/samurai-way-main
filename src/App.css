@@ -10,27 +10,6 @@
     margin: 0 auto;
 }
 
-.nav {
-    grid-area: n;
-    background-color: #5fa06c;
-    /*width: 100px;*/
-
-}
-
-.header {
-    grid-area: h;
-}
-
-.content {
-    grid-area: c;
-    background-color: #56b2b2;
-}
-
-.header img {
-    width: 50px;
-    border-radius: 5px;
-}
-
 .avatar img {
     width: 100px;
 }

@@ -1,0 +1,15 @@
+
+.content {
+    grid-area: c;
+    background-color: #5fb256;
+}
+.photo{
+    border-radius: 10px;
+}
+.avatar img {
+    border-radius: 10px;
+}
+
+.item {
+    color: #1b1e1b;
+}

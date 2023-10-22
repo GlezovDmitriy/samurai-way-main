@@ -12,10 +12,15 @@ export const MyPosts = () => {
                 <button> Add post</button>
                 <textarea></textarea>
             </div>
-            <Post/>
-            <Post/>
-            <Post/>
-            <Post/>
+            <div>
+                <Post massage = "Hi? how are you?"
+                      likeCount = {15}/>
+                <Post massage = "It's my first post!"
+                      likeCount = {10}/>
+            </div>
+
+            <Post massage = "Hi! " likeCount = {25}/>
+            <Post massage = "Hello! " likeCount = {14}/>
 
         </div>
 

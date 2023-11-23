@@ -1,18 +1,22 @@
 .app-wrapper {
+    margin: 0 auto;
+    width: 1200px;
     background-color: rgba(146, 29, 224, 0.75);
     display: grid;
-    grid-template-rows: 2;
+    grid-template-areas:"h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
 
-    grid-template-areas:
-    "h h"
-    "n c";
-    width: 1200px;
-    margin: 0 auto;
+
+
+
 }
 
 .avatar img {
     width: 100px;
 }
 .app-wrapper-content{
+    grid-area: c;
     background-color: #99ced7;
+
 }

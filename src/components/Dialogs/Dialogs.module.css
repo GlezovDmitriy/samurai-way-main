@@ -3,10 +3,15 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialogs-items {
+.dialogsItems {
     padding: 10px;
 }
+.dialog{
 
+}
+.dialogsItems .active {
+    color: #59142c;
+}
 .messages {
     padding: 10px;
 }

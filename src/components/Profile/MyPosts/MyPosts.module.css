@@ -1,1 +1,18 @@
 
+.postsBlock {
+    padding: 10px;
+}
+
+.textarea {
+    margin-top: 10px;
+    resize: none;
+    border: 1px solid red;
+    border-radius: 11px;
+}
+
+.button{
+    margin-bottom: 10px;
+    width: 100px;
+    height: 20px;
+    border-radius: 11px;
+}

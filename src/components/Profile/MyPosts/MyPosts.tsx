@@ -2,7 +2,20 @@ import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 
-export const MyPosts = () => {
+type MyPostsType = {
+    message: string
+    id: number
+    likesCount: number
+}
+export const MyPosts = (props:MyPostsType) => {
+    let postsData = [
+        {id: 1, message: "thrthrth", likesCount: 6},
+        {id: 2, message: "yyymessage", likesCount: 3}
+    ]
+    let postsElements = postsData.map(p=>{
+       <Post massage={p.message} likeCount = {p.likesCount}/>
+
+    })
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -14,14 +27,11 @@ export const MyPosts = () => {
                 <div><button className={s.button}> Add post</button></div>
             </div>
             <div className={s.posts}>
-                <Post massage = "Hi? how are you?"
-                      likeCount = {15}/>
-                <Post massage = "It's my first post!"
-                      likeCount = {10}/>
+                {postsElements}
             </div>
 
-            <Post massage = "Hi! " likeCount = {25}/>
-            <Post massage = "Hello! " likeCount = {14}/>
+
+
 
         </div>
 

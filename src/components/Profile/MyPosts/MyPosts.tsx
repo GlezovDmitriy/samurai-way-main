@@ -9,12 +9,13 @@ type MyPostsType = {
 }
 export const MyPosts = (props:MyPostsType) => {
     let postsData = [
-        {id: 1, message: "thrthrth", likesCount: 6},
-        {id: 2, message: "yyymessage", likesCount: 3}
+        {id: 1, message: "Hello, my friend!", likesCount: 6},
+        {id: 2, message: "How are you?", likesCount: 3}
     ]
     let postsElements = postsData.map(p=>{
-       <Post massage={p.message} likeCount = {p.likesCount}/>
-
+        return(
+            <Post massage={p.message} likeCount = {p.likesCount}/>
+            )
     })
     return (
         <div className={s.postsBlock}>

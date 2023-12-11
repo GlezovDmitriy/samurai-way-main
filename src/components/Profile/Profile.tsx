@@ -4,18 +4,17 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
 import {message} from "antd";
+import {PostsDataType, PostType} from "../../index";
 
 type ProfileType = {
-    message: string,
-    id:number,
-    likesCount:number
+    postsData: PostsDataType
 }
 export const Profile = (props: ProfileType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
             <Avatar/>
-            <MyPosts message={props.message} id={props.id} likesCount={props.likesCount} />
+            <MyPosts postsData = {props.postsData}/>
 
         </div>
     );

@@ -9,8 +9,15 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
+import {DialogsDataType, MessagesDataType, PostsDataType, PostType} from "./index";
 
-function App() {
+type AppType = {
+    postsData: PostsDataType,
+    dialogsData: DialogsDataType,
+    messagesData: MessagesDataType
+}
+
+function App(props: AppType) {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -19,9 +26,16 @@ function App() {
                 {/* <Profile/>*/}
                 <div className={"app-wrapper-content"}>
                     <Route path='/dialogs'
-                           component={Dialogs}/>
+                        //component={Dialogs dialogsData = {props.dialogsData}}/>
+                           render={() =>
+                               <Dialogs dialogsData={props.dialogsData}
+                                        messagesData={props.messagesData}/>
+                           }
+                    />
+                    {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
-                        component={Profile}/>
+                        //component={Profile}
+                           render={() => <Profile postsData={props.postsData}/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'
@@ -31,7 +45,7 @@ function App() {
 
                 </div>
             </div>
-            </BrowserRouter>
+        </BrowserRouter>
     );
 }
 

@@ -1,18 +1,19 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
+import {PostsDataType, PostType} from "../../../index";
 
 type MyPostsType = {
-    message: string
-    id: number
-    likesCount: number
+    postsData: PostsDataType
 }
 export const MyPosts = (props:MyPostsType) => {
-    let postsData = [
+    /*let postsData = [
         {id: 1, message: "Hello, my friend!", likesCount: 6},
-        {id: 2, message: "How are you?", likesCount: 3}
-    ]
-    let postsElements = postsData.map(p=>{
+        {id: 2, message: "How are you?", likesCount: 3},
+        {id: 3, message: "How ?", likesCount: 5},
+        {id: 4, message: "you?", likesCount: 4},
+    ]*/
+    let postsElements = props.postsData.map(p=>{
         return(
             <Post massage={p.message} likeCount = {p.likesCount}/>
             )
@@ -30,12 +31,7 @@ export const MyPosts = (props:MyPostsType) => {
             <div className={s.posts}>
                 {postsElements}
             </div>
-
-
-
-
         </div>
-
     );
 };
 

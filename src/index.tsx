@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import state from "./redux/state";
 /*export type PostType = {
     message: string
     id: number
@@ -41,8 +41,9 @@ let messagesData:MessagesDataType = [
 ]*/
 ReactDOM.render(
     <App
-        postsData={postsData}
-        dialogsData={dialogsData}
-        messagesData={messagesData}/>,
+        postsData={state.profilePage.postsData}
+        dialogsData={state.dialogsPage.dialogsData}
+        messagesData={state.dialogsPage.messagesData}
+        friends={state.sidebar.friends}/>,
     document.getElementById('root')
 );

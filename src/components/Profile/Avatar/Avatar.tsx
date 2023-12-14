@@ -3,9 +3,6 @@ import s from './Avatar.module.css';
 
 export const Avatar = () => {
     return (
-
-
-
             <div className={s.avatar}>
                 <div>
                     <img
@@ -15,10 +12,7 @@ export const Avatar = () => {
                 <div className={s.item}>
                     Ava+discription
                 </div>
-
-
             </div>
-
     );
 };
 

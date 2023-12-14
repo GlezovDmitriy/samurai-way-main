@@ -4,7 +4,7 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
 import {message} from "antd";
-import {PostsDataType, PostType} from "../../index";
+import {PostsDataType, PostType} from "../../redux/state";
 
 type ProfileType = {
     postsData: PostsDataType

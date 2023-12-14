@@ -9,12 +9,14 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
-import {DialogsDataType, MessagesDataType, PostsDataType, PostType} from "./index";
+import {DialogsDataType, FriendsType, MessagesDataType, PostsDataType, PostType} from "./redux/state";
+import {MyFriends} from "./components/Friends/MyFriends";
 
 type AppType = {
     postsData: PostsDataType,
     dialogsData: DialogsDataType,
-    messagesData: MessagesDataType
+    messagesData: MessagesDataType,
+    friends: FriendsType,
 }
 
 function App(props: AppType) {
@@ -42,6 +44,8 @@ function App(props: AppType) {
                            component={Music}/>
                     <Route path='/settings'
                            component={Settings}/>
+                    <Route path='/friends'
+                           render={() => <MyFriends friends ={props.friends}/>}/>
 
                 </div>
             </div>

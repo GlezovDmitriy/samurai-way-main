@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-export type PostType = {
+/*export type PostType = {
     message: string
     id: number
     likesCount: number
@@ -38,7 +38,7 @@ let messagesData:MessagesDataType = [
     {id: 2, message: "HELLOeeee eeeeee!"},
     {id: 3, message: "HELLOwwwww wwww!"},
     {id: 4, message: "HELLOrrrrr rrrr!"},
-]
+]*/
 ReactDOM.render(
     <App
         postsData={postsData}

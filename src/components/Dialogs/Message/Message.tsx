@@ -8,7 +8,7 @@ type MessageType = {
 
 export const Message = (props: MessageType) => {
     return (
-        <div className={s.dialog}>{props.message}</div>
+            <div className={s.dialog}>{props.message}</div>
     )
 }
 

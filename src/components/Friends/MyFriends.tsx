@@ -13,6 +13,13 @@ export const MyFriends = (props: MyFriendsType) => {
                  src="https://images.pexels.com/photos/1387037/pexels-photo-1387037.jpeg?auto=compress&cs=tinysrgb&w=600"
                  alt="photo"/>
             <h3> Friends </h3>
+            <ul>
+                {props.friends.map((f)=>
+                        { return(
+                <li> {f.name}</li>
+                )})}
+
+            </ul>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent, ChangeEventHandler} from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostsDataType, PostType} from "../../../redux/state";
@@ -6,27 +6,41 @@ import {PostsDataType, PostType} from "../../../redux/state";
 type MyPostsType = {
     postsData: PostsDataType
 }
-export const MyPosts = (props:MyPostsType) => {
+export const MyPosts = (props: MyPostsType) => {
     /*let postsData = [
         {id: 1, message: "Hello, my friend!", likesCount: 6},
         {id: 2, message: "How are you?", likesCount: 3},
         {id: 3, message: "How ?", likesCount: 5},
         {id: 4, message: "you?", likesCount: 4},
     ]*/
-    let postsElements = props.postsData.map(p=>{
-        return(
-            <Post massage={p.message} likeCount = {p.likesCount}/>
-            )
+    let postsElements = props.postsData.map(p => {
+        return (
+            <Post massage={p.message} likeCount={p.likesCount}/>
+        )
     })
+    /*const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        e.currentTarget.value
+    }*/
+    let newPostElement:any = React.createRef()
+    const onClickHandler = () => {
+        let text = newPostElement.current.value
+        alert(text)
+    }
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div className={s.item}>
                 My post
             </div>
-            <div >
-                <textarea className={s.textarea} placeholder={"typing message..."}></textarea>
-                <div><button className={s.button}> Add post</button></div>
+            <div>
+                <textarea /*className={s.textarea}
+                          placeholder={"typing message..."}*/
+                          ref={newPostElement}></textarea>
+                <div>
+                    <button className={s.button}
+                            onClick={onClickHandler}> Add post
+                    </button>
+                </div>
             </div>
             <div className={s.posts}>
                 {postsElements}

@@ -2,6 +2,7 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsDataType, MessagesDataType} from "../../redux/state";
+import React, {useRef} from "react";
 
 type DialogsType = {
     dialogsData: DialogsDataType,
@@ -44,6 +45,14 @@ export const Dialogs = (props: DialogsType) => {
                 <Message id={m.id} message={m.message}/>
             )
         })
+    let newMessage = useRef<HTMLTextAreaElement>(null)
+    const addMessage = ()=>{
+        if (newMessage.current!== null){
+            let text = newMessage.current.value
+            alert(text)
+        }
+
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -52,6 +61,8 @@ export const Dialogs = (props: DialogsType) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
+            <textarea ref={newMessage}></textarea>
+            <button onClick={addMessage}>ADD MESSAGE</button>
         </div>
 
     )

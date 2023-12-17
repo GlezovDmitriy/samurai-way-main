@@ -6,7 +6,8 @@ import React, {useRef} from "react";
 
 type DialogsType = {
     dialogsData: DialogsDataType,
-    messagesData: MessagesDataType
+    messagesData: MessagesDataType,
+    addMessage:(message:string)=>void,
 }
 /*export type DialogItemType = {
     id: number
@@ -47,9 +48,12 @@ export const Dialogs = (props: DialogsType) => {
         })
     let newMessage = useRef<HTMLTextAreaElement>(null)
     const addMessage = ()=>{
+        debugger
         if (newMessage.current!== null){
             let text = newMessage.current.value
             alert(text)
+
+            props.addMessage(newMessage.current.value)
         }
 
     }

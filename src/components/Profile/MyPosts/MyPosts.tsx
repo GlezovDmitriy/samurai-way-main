@@ -1,10 +1,11 @@
-import React, {ChangeEvent, ChangeEventHandler} from 'react';
+import React, {ChangeEvent, ChangeEventHandler, useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
 import {PostsDataType, PostType} from "../../../redux/state";
 
 type MyPostsType = {
-    postsData: PostsDataType
+    postsData: PostsDataType,
+    addPost:(postMessage:string)=>void,
 }
 export const MyPosts = (props: MyPostsType) => {
     /*let postsData = [
@@ -18,13 +19,15 @@ export const MyPosts = (props: MyPostsType) => {
             <Post massage={p.message} likeCount={p.likesCount}/>
         )
     })
-    /*const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        e.currentTarget.value
-    }*/
-    let newPostElement:any = React.createRef()
-    const onClickHandler = () => {
-        let text = newPostElement.current.value
-        alert(text)
+
+    let newPostElement = useRef<HTMLTextAreaElement>(null)
+    const addPost = () => {
+        if(newPostElement.current!== null){
+            let text = newPostElement.current.value
+            alert(text)
+            props.addPost(newPostElement.current.value)
+        }
+
     }
     return (
         <div className={s.postsBlock}>
@@ -38,7 +41,7 @@ export const MyPosts = (props: MyPostsType) => {
                           ref={newPostElement}></textarea>
                 <div>
                     <button className={s.button}
-                            onClick={onClickHandler}> Add post
+                            onClick={addPost}> Add post
                     </button>
                 </div>
             </div>

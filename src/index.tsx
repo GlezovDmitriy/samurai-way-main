@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state from "./redux/state";
+import state, {addMessage, addPost} from "./redux/state";
 /*export type PostType = {
     message: string
     id: number
@@ -39,11 +39,18 @@ let messagesData:MessagesDataType = [
     {id: 3, message: "HELLOwwwww wwww!"},
     {id: 4, message: "HELLOrrrrr rrrr!"},
 ]*/
+type AppType = {
+    addPost:(postMessage:string)=> void,
+    addMessage:(message:string)=>void,
+}
+//addPost('uuuuuu')
 ReactDOM.render(
     <App
         postsData={state.profilePage.postsData}
         dialogsData={state.dialogsPage.dialogsData}
         messagesData={state.dialogsPage.messagesData}
-        friends={state.sidebar.friends}/>,
+        friends={state.sidebar.friends}
+    addPost = {addPost}
+    addMessage={addMessage}/>,
     document.getElementById('root')
 );

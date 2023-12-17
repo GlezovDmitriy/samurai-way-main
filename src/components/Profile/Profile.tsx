@@ -4,17 +4,19 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
 import {message} from "antd";
-import {PostsDataType, PostType} from "../../redux/state";
+import {addPost, PostsDataType, PostType} from "../../redux/state";
 
 type ProfileType = {
-    postsData: PostsDataType
+    postsData: PostsDataType,
+    addPost:(postMessage:string)=>void,
 }
 export const Profile = (props: ProfileType) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
             <Avatar/>
-            <MyPosts postsData = {props.postsData}/>
+            <MyPosts postsData = {props.postsData}
+            addPost = {addPost}/>
 
         </div>
     );

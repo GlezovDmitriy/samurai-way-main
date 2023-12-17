@@ -9,7 +9,15 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
-import {DialogsDataType, FriendsType, MessagesDataType, PostsDataType, PostType} from "./redux/state";
+import {
+    addMessage,
+    addPost,
+    DialogsDataType,
+    FriendsType,
+    MessagesDataType,
+    PostsDataType,
+    PostType
+} from "./redux/state";
 import {MyFriends} from "./components/Friends/MyFriends";
 
 type AppType = {
@@ -17,6 +25,8 @@ type AppType = {
     dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
     friends: FriendsType,
+    addPost:(postMessage:string)=>void,
+    addMessage:(message:string)=>void,
 }
 
 function App(props: AppType) {
@@ -31,13 +41,15 @@ function App(props: AppType) {
                         //component={Dialogs dialogsData = {props.dialogsData}}/>
                            render={() =>
                                <Dialogs dialogsData={props.dialogsData}
-                                        messagesData={props.messagesData}/>
+                                        messagesData={props.messagesData}
+                                        addMessage={addMessage}/>
                            }
                     />
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
                         //component={Profile}
-                           render={() => <Profile postsData={props.postsData}/>}/>
+                           render={() => <Profile postsData={props.postsData}
+                                                  addPost={addPost}/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

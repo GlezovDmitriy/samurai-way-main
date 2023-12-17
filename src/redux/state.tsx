@@ -55,11 +55,19 @@ let state = {
 }
 
 export const addPost = (postMessage:string)=>{
-    let newPost = {
+    const newPost = {
         id:5,
         message:postMessage,
         likesCount:0
     }
-    state.profilePage.postsData.push()
+    state.profilePage.postsData.push(newPost)
+}
+export const addMessage = (message:string)=>{
+    debugger
+    const newMessage = {
+        id:state.dialogsPage.messagesData.length+1,
+        message:message,
+    }
+    state.dialogsPage.messagesData.push(newMessage)
 }
 export default state;

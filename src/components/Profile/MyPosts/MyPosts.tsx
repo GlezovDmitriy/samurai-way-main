@@ -26,6 +26,7 @@ export const MyPosts = (props: MyPostsType) => {
             let text = newPostElement.current.value
             alert(text)
             props.addPost(newPostElement.current.value)
+            newPostElement.current.value = ''
         }
 
     }

@@ -10,8 +10,6 @@ import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
 import {
-    addMessage,
-    addPost,
     DialogsDataType,
     FriendsType,
     MessagesDataType,
@@ -42,14 +40,14 @@ function App(props: AppType) {
                            render={() =>
                                <Dialogs dialogsData={props.dialogsData}
                                         messagesData={props.messagesData}
-                                        addMessage={addMessage}/>
+                                        addMessage={props.addMessage}/>
                            }
                     />
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
                         //component={Profile}
                            render={() => <Profile postsData={props.postsData}
-                                                  addPost={addPost}/>}/>
+                                                  addPost={props.addPost}/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

@@ -3,8 +3,7 @@ import s from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
-import {message} from "antd";
-import {addPost, PostsDataType, PostType} from "../../redux/state";
+import {PostsDataType, PostType} from "../../redux/state";
 
 type ProfileType = {
     postsData: PostsDataType,
@@ -16,7 +15,7 @@ export const Profile = (props: ProfileType) => {
             <ProfileInfo/>
             <Avatar/>
             <MyPosts postsData = {props.postsData}
-            addPost = {addPost}/>
+            addPost = {props.addPost}/>
 
         </div>
     );

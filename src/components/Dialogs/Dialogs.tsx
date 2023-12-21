@@ -1,8 +1,9 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsDataType, MessagesDataType} from "../../redux/state";
+import state, {DialogsDataType, MessagesDataType} from "../../redux/state";
 import React, {useRef} from "react";
+import {renderEntireTree} from "../../render";
 
 type DialogsType = {
     dialogsData: DialogsDataType,
@@ -52,8 +53,9 @@ export const Dialogs = (props: DialogsType) => {
         if (newMessage.current!== null){
             let text = newMessage.current.value
             alert(text)
-
+            renderEntireTree(state);
             props.addMessage(newMessage.current.value)
+            newMessage.current.value = '';
         }
 
     }

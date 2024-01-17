@@ -1,11 +1,16 @@
 import {renderEntireTree} from "../render";
 
+
 export type PostType = {
     message: string
     id: number
     likesCount: number
 }
 export type PostsDataType = PostType[]
+export type ProfilePageType = {
+    postsData: PostsDataType,
+    newPostText: string
+}
 export type DialogType = {
     id: number,
     name: string
@@ -16,13 +21,25 @@ export type MessageType = {
     message: string
 }
 export type MessagesDataType = MessageType[]
+export type DialogsPageType = {
+    dialogsData: DialogsDataType,
+    messagesData: MessagesDataType
+}
 export type FriendType = {
     id:number,
     name: string,
 }
 export type FriendsType = FriendType[]
+export type SidebarType = {
+    friends: FriendsType
+}
 
-let state = {
+export type StateType = {
+    profilePage: ProfilePageType,
+    dialogsPage: DialogsPageType,
+    sidebar: SidebarType
+}
+let state: StateType = {
     profilePage: {
         postsData: [
             {id: 1, message: "Hello, my friend!", likesCount: 6},
@@ -30,6 +47,7 @@ let state = {
             {id: 3, message: "How ?", likesCount: 5},
             {id: 4, message: "you?", likesCount: 4},
         ],
+        newPostText: 'it-kamasutra'
     },
     dialogsPage: {
         dialogsData: [

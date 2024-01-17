@@ -14,17 +14,19 @@ import {
     FriendsType,
     MessagesDataType,
     PostsDataType,
-    PostType
+    PostType, StateType
 } from "./redux/state";
 import {MyFriends} from "./components/Friends/MyFriends";
 
 type AppType = {
-    postsData: PostsDataType,
+    /*postsData: PostsDataType,
     dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
     friends: FriendsType,
+    */
     addPost:(postMessage:string)=>void,
     addMessage:(message:string)=>void,
+    state: StateType
 }
 
 function App(props: AppType) {
@@ -38,15 +40,16 @@ function App(props: AppType) {
                     <Route path='/dialogs'
                         //component={Dialogs dialogsData = {props.dialogsData}}/>
                            render={() =>
-                               <Dialogs dialogsData={props.dialogsData}
-                                        messagesData={props.messagesData}
+                               <Dialogs dialogsData={props.state.dialogsPage.dialogsData}
+                                        messagesData={props.state.dialogsPage.messagesData}
                                         addMessage={props.addMessage}/>
                            }
                     />
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
                         //component={Profile}
-                           render={() => <Profile postsData={props.postsData}
+                           render={() => <Profile postsData={props.state.profilePage.postsData}
+                                                  newPostText={props.state.profilePage.newPostText}
                                                   addPost={props.addPost}/>}/>
                     <Route path='/news'
                            component={News}/>
@@ -55,7 +58,7 @@ function App(props: AppType) {
                     <Route path='/settings'
                            component={Settings}/>
                     <Route path='/friends'
-                           render={() => <MyFriends friends ={props.friends}/>}/>
+                           render={() => <MyFriends friends ={props.state.sidebar.friends}/>}/>
 
                 </div>
             </div>

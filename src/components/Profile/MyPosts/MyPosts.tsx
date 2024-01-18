@@ -6,6 +6,7 @@ import {PostsDataType, PostType} from "../../../redux/state";
 type MyPostsType = {
     postsData: PostsDataType,
     addPost:(postMessage:string)=>void,
+    newPostText: string
 }
 export const MyPosts = (props: MyPostsType) => {
     /*let postsData = [
@@ -39,7 +40,8 @@ export const MyPosts = (props: MyPostsType) => {
             <div>
                 <textarea /*className={s.textarea}
                           placeholder={"typing message..."}*/
-                          ref={newPostElement}></textarea>
+                          ref={newPostElement}
+                value={props.newPostText}></textarea>
                 <div>
                     <button className={s.button}
                             onClick={addPost}> Add post

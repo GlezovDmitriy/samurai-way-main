@@ -7,6 +7,7 @@ import {addMessage, addPost} from "./redux/state";
 export const renderEntireTree = (state:any)=>{
     ReactDOM.render(
         <App
+            state={state}
             postsData={state.profilePage.postsData}
             dialogsData={state.dialogsPage.dialogsData}
             messagesData={state.dialogsPage.messagesData}

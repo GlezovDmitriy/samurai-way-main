@@ -8,6 +8,7 @@ import {PostsDataType, PostType} from "../../redux/state";
 type ProfileType = {
     postsData: PostsDataType,
     addPost: (postMessage: string) => void,
+    newPostText: string
 }
 export const Profile = (props: ProfileType) => {
     return (
@@ -15,6 +16,7 @@ export const Profile = (props: ProfileType) => {
             <ProfileInfo/>
             <Avatar/>
             <MyPosts postsData={props.postsData}
+                     newPostText={props.newPostText}
                      addPost={props.addPost}/>
 
         </div>

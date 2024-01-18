@@ -91,4 +91,8 @@ export const addMessage = (message:string)=>{
     }
     state.dialogsPage.messagesData.push(newMessage)
 }
+export const updateNewPostText = (newText:string)=>{
+    state.profilePage.newPostText = newText
+    renderEntireTree(state)
+}
 export default state;

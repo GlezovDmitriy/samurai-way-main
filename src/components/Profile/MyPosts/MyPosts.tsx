@@ -6,7 +6,9 @@ import {PostsDataType, PostType} from "../../../redux/state";
 type MyPostsType = {
     postsData: PostsDataType,
     addPost:(postMessage:string)=>void,
-    newPostText: string
+    newPostText: string,
+    updateNewPostText:(text:string)=>void
+
 }
 export const MyPosts = (props: MyPostsType) => {
     /*let postsData = [
@@ -26,8 +28,15 @@ export const MyPosts = (props: MyPostsType) => {
         if(newPostElement.current!== null){
             let text = newPostElement.current.value
             alert(text)
-            props.addPost(newPostElement.current.value)
-            newPostElement.current.value = ''
+            props.addPost(text)
+            props.updateNewPostText('')
+        }
+
+    }
+    let onPostChange = ()=>{
+        if(newPostElement.current!== null){
+            let text = newPostElement.current.value;
+            props.updateNewPostText(text)
         }
 
     }
@@ -40,6 +49,7 @@ export const MyPosts = (props: MyPostsType) => {
             <div>
                 <textarea /*className={s.textarea}
                           placeholder={"typing message..."}*/
+                    onChange={onPostChange}
                           ref={newPostElement}
                 value={props.newPostText}></textarea>
                 <div>

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addMessage, addPost} from "./redux/state";
+import {addMessage, addPost, updateNewPostText} from "./redux/state";
 
 export const renderEntireTree = (state:any)=>{
     ReactDOM.render(
@@ -13,7 +13,8 @@ export const renderEntireTree = (state:any)=>{
             messagesData={state.dialogsPage.messagesData}
             friends={state.sidebar.friends}
             addPost = {addPost}
-            addMessage={addMessage}/>,
+            addMessage={addMessage}
+            updateNewPostText={updateNewPostText}/>,
         document.getElementById('root')
     );
 }

@@ -14,7 +14,7 @@ import {
     FriendsType,
     MessagesDataType,
     PostsDataType,
-    PostType, StateType
+    PostType, StateType, updateNewPostText
 } from "./redux/state";
 import {MyFriends} from "./components/Friends/MyFriends";
 
@@ -25,7 +25,8 @@ type AppType = {
     postsData: PostsDataType,
     addPost:(postMessage:string)=>void,
     addMessage:(message:string)=>void,
-    state: StateType
+    state: StateType,
+    updateNewPostText:(text:string)=>void
 }
 
 function App(props: AppType) {
@@ -49,7 +50,8 @@ function App(props: AppType) {
                         //component={Profile}
                            render={() => <Profile postsData={props.state.profilePage.postsData}
                                                   newPostText={props.state.profilePage.newPostText}
-                                                  addPost={props.addPost}/>}/>
+                                                  addPost={props.addPost}
+                                                  updateNewPostText={props.updateNewPostText}/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

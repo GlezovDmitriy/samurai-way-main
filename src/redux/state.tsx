@@ -1,4 +1,4 @@
-import {renderEntireTree} from "../render";
+
 
 
 export type PostType = {
@@ -34,11 +34,14 @@ export type FriendsType = FriendType[]
 export type SidebarType = {
     friends: FriendsType
 }
-
 export type StateType = {
     profilePage: ProfilePageType,
     dialogsPage: DialogsPageType,
     sidebar: SidebarType
+}
+
+let renderEntireTree= (state:any)=>{
+    console.log('state changed')
 }
 let state: StateType = {
     profilePage: {
@@ -92,6 +95,7 @@ export const addMessage = ()=>{
         message:state.dialogsPage.newMessageText,
     }
     state.dialogsPage.messagesData.push(newMessage)
+    renderEntireTree(state)
 }
 export const updateNewPostText = (newText:string)=>{
     state.profilePage.newPostText = newText
@@ -103,4 +107,7 @@ export const updateNewMessageText = (newText:string)=>{
     console.log(state)
 }
 
+export const subscribe =(observer:any)=>{
+    renderEntireTree = observer
+}
 export default state;

@@ -3,7 +3,7 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import state, {DialogsDataType, MessagesDataType} from "../../redux/state";
 import React, {useRef} from "react";
-import {renderEntireTree} from "../../render";
+
 
 type DialogsType = {
     dialogsData: DialogsDataType,
@@ -77,7 +77,8 @@ export const Dialogs = (props: DialogsType) => {
                       value={props.newMessageText}
                       onChange={onMessageChange}
             />
-            <button onClick={addMessage}>ADD MESSAGE</button>
+            <button onClick={addMessage}
+            disabled={props.newMessageText ==''}>ADD MESSAGE</button>
         </div>
 
     )

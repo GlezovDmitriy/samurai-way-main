@@ -19,10 +19,6 @@ import {
 import {MyFriends} from "./components/Friends/MyFriends";
 
 type AppType = {
-    dialogsData: DialogsDataType,
-    messagesData: MessagesDataType,
-    friends: FriendsType,
-    postsData: PostsDataType,
     addPost:()=>void,
     addMessage:(message:string)=>void,
     state: StateType,

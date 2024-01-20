@@ -9,6 +9,8 @@ type DialogsType = {
     dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
     addMessage:(message:string)=>void,
+    newMessageText:string,
+    updateNewMessageText:(text:string)=>void
 }
 /*export type DialogItemType = {
     id: number
@@ -49,15 +51,19 @@ export const Dialogs = (props: DialogsType) => {
         })
     let newMessage = useRef<HTMLTextAreaElement>(null)
     const addMessage = ()=>{
-        debugger
+
         if (newMessage.current!== null){
             let text = newMessage.current.value
-            alert(text)
-            renderEntireTree(state);
-            props.addMessage(newMessage.current.value)
-            newMessage.current.value = '';
+            props.addMessage(text)
+            props.updateNewMessageText('');
         }
 
+    }
+    let onMessageChange=()=>{
+        if (newMessage.current!== null){
+            let text = newMessage.current.value
+           props.updateNewMessageText(text)
+        }
     }
     return (
         <div className={s.dialogs}>
@@ -67,7 +73,10 @@ export const Dialogs = (props: DialogsType) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <textarea ref={newMessage}></textarea>
+            <textarea ref={newMessage}
+                      value={props.newMessageText}
+                      onChange={onMessageChange}
+            />
             <button onClick={addMessage}>ADD MESSAGE</button>
         </div>
 

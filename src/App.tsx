@@ -14,7 +14,7 @@ import {
     FriendsType,
     MessagesDataType,
     PostsDataType,
-    PostType, StateType, updateNewPostText
+    PostType, StateType, updateNewMessageText, updateNewPostText
 } from "./redux/state";
 import {MyFriends} from "./components/Friends/MyFriends";
 
@@ -23,10 +23,11 @@ type AppType = {
     messagesData: MessagesDataType,
     friends: FriendsType,
     postsData: PostsDataType,
-    addPost:(postMessage:string)=>void,
+    addPost:()=>void,
     addMessage:(message:string)=>void,
     state: StateType,
     updateNewPostText:(text:string)=>void
+    updateNewMessageText:(text:string)=>void
 }
 
 function App(props: AppType) {
@@ -42,7 +43,10 @@ function App(props: AppType) {
                            render={() =>
                                <Dialogs dialogsData={props.state.dialogsPage.dialogsData}
                                         messagesData={props.state.dialogsPage.messagesData}
-                                        addMessage={props.addMessage}/>
+                                        addMessage={props.addMessage}
+                                        updateNewMessageText={props.updateNewMessageText}
+                                        newMessageText={props.state.dialogsPage.newMessageText}
+                               />
                            }
                     />
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}

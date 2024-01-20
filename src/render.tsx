@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addMessage, addPost, updateNewPostText} from "./redux/state";
+import {addMessage, addPost, updateNewPostText, updateNewMessageText} from "./redux/state";
 
-export const renderEntireTree = (state:any)=>{
+export const renderEntireTree = (state: any) => {
     ReactDOM.render(
         <App
             state={state}
@@ -12,9 +12,10 @@ export const renderEntireTree = (state:any)=>{
             dialogsData={state.dialogsPage.dialogsData}
             messagesData={state.dialogsPage.messagesData}
             friends={state.sidebar.friends}
-            addPost = {addPost}
+            addPost={addPost}
             addMessage={addMessage}
-            updateNewPostText={updateNewPostText}/>,
+            updateNewPostText={updateNewPostText}
+            updateNewMessageText={updateNewMessageText}/>,
         document.getElementById('root')
     );
 }

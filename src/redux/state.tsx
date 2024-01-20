@@ -23,7 +23,8 @@ export type MessageType = {
 export type MessagesDataType = MessageType[]
 export type DialogsPageType = {
     dialogsData: DialogsDataType,
-    messagesData: MessagesDataType
+    messagesData: MessagesDataType,
+    newMessageText: string
 }
 export type FriendType = {
     id:number,
@@ -47,7 +48,7 @@ let state: StateType = {
             {id: 3, message: "How ?", likesCount: 5},
             {id: 4, message: "you?", likesCount: 4},
         ],
-        newPostText: 'it-kamasutra'
+        newPostText: ''
     },
     dialogsPage: {
         dialogsData: [
@@ -64,6 +65,7 @@ let state: StateType = {
             {id: 3, message: "HELLOwwwww wwww!"},
             {id: 4, message: "HELLOrrrrr rrrr!"},
         ],
+        newMessageText: 'NEW-MESSAGE'
     },
     sidebar: {
         friends: [
@@ -74,20 +76,20 @@ let state: StateType = {
     }
 }
 
-export const addPost = (postMessage:string)=>{
+export const addPost = ()=>{
     const newPost = {
         id:5,
-        message:postMessage,
+        message:state.profilePage.newPostText,
         likesCount:3
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText =''
     renderEntireTree(state)
 }
-export const addMessage = (message:string)=>{
-    debugger
+export const addMessage = ()=>{
     const newMessage = {
         id:state.dialogsPage.messagesData.length+1,
-        message:message,
+        message:state.dialogsPage.newMessageText,
     }
     state.dialogsPage.messagesData.push(newMessage)
 }
@@ -95,4 +97,10 @@ export const updateNewPostText = (newText:string)=>{
     state.profilePage.newPostText = newText
     renderEntireTree(state)
 }
+export const updateNewMessageText = (newText:string)=>{
+    state.dialogsPage.newMessageText = newText
+    renderEntireTree(state)
+    console.log(state)
+}
+
 export default state;

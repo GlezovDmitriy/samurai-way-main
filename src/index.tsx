@@ -9,6 +9,7 @@ export const renderEntireTree = () => {
     ReactDOM.render(
         <App
             store={store}
+dispatch={store.dispatch.bind(store)}
             /*addPost={addPost}
             addMessage={addMessage}
             updateNewPostText={updateNewPostText}

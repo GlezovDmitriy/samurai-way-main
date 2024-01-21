@@ -3,13 +3,12 @@ import s from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
-import {PostsDataType} from "../../redux/state";
+import {ActionsTypes, PostsDataType, store} from "../../redux/state";
 
 type ProfileType = {
     postsData: PostsDataType,
-    addPost: () => void,
     newPostText: string,
-    updateNewPostText:(text:string)=>void
+    dispatch:(action:ActionsTypes)=>void,
 }
 export const Profile = (props: ProfileType) => {
     return (
@@ -18,8 +17,7 @@ export const Profile = (props: ProfileType) => {
             <Avatar/>
             <MyPosts postsData={props.postsData}
                      newPostText={props.newPostText}
-                     addPost={props.addPost}
-                     updateNewPostText={props.updateNewPostText}/>
+                     dispatch={props.dispatch}/>
 
         </div>
     );

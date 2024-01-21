@@ -9,11 +9,12 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
-import {StoreType} from "./redux/state";
+import {ActionsTypes, StoreType} from "./redux/state";
 import {MyFriends} from "./components/Friends/MyFriends";
 
 type AppType = {
     store:StoreType,
+    dispatch:(action:ActionsTypes)=>void,
     /*addPost:()=>void,
     addMessage:(message:string)=>void,
     state: StateType,
@@ -46,8 +47,9 @@ function App(props: AppType) {
                         //component={Profile}
                            render={() => <Profile postsData={state.profilePage.postsData}
                                                   newPostText={state.profilePage.newPostText}
-                                                  addPost={props.store.addPost.bind(props.store)}
-                                                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                                                  dispatch={props.store.dispatch.bind(props.store)}
+                                                  /*addPost={props.store.addPost.bind(props.store)}
+                                                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}*//>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

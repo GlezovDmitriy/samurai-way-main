@@ -36,15 +36,29 @@ export type StateType = {
     dialogsPage: DialogsPageType,
     sidebar: SidebarType
 }
+export type AddPostActionType = {
+    type: 'ADD-POST',
+    newPostText: string,
+}
+export type UpdatePostActionType = {
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: string,
+}
+export type AddMessageActionType = {
+    type: 'ADD-MESSAGE',
+}
+export type ActionsTypes = AddPostActionType | UpdatePostActionType
+    | AddMessageActionType
 export type StoreType = {
     _state: StateType,
-    addPost: () => void,
+    /*addPost: () => void,*/
     addMessage: () => void,
-    updateNewPostText: (newText: string) => void
+    /*updateNewPostText: (newText: string) => void*/
     updateNewMessageText: (newText: string) => void
-    subscribe:(observer: () => void) => void
-    _renderEntireTree:()=>void,
-    getState:()=>StateType
+    subscribe: (observer: () => void) => void
+    _renderEntireTree: () => void,
+    getState: () => StateType,
+    dispatch: (action: ActionsTypes) => void,
 }
 export const store: StoreType = {
     _state: {
@@ -82,7 +96,7 @@ export const store: StoreType = {
             ],
         }
     },
-    addPost() {
+    /*addPost() {
         const newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -91,7 +105,7 @@ export const store: StoreType = {
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = ''
         this._renderEntireTree()
-    },
+    },*/
     addMessage() {
         const newMessage = {
             id: this._state.dialogsPage.messagesData.length + 1,
@@ -100,10 +114,10 @@ export const store: StoreType = {
         this._state.dialogsPage.messagesData.push(newMessage)
         this._renderEntireTree()
     },
-    updateNewPostText(newText: string) {
+    /*updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._renderEntireTree()
-    },
+    },*/
     updateNewMessageText(newText: string) {
         this._state.dialogsPage.newMessageText = newText
         this._renderEntireTree()
@@ -112,15 +126,29 @@ export const store: StoreType = {
     subscribe(observer: () => void) {
         this._renderEntireTree = observer
     },
-    _renderEntireTree () {
+    _renderEntireTree() {
         console.log('state changed')
     },
-    getState(){
+    getState() {
         return this._state
+    },
+    dispatch(action: ActionsTypes) {
+        if (action.type === 'ADD-POST') {
+            const newPost = {
+                id: 5,
+                /*message: this._state.profilePage.newPostText,*/
+                message: action.newPostText,
+                likesCount: 3
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._renderEntireTree()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._renderEntireTree()
+        }
     }
 }
-
-
 
 
 export default store;

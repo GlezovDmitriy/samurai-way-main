@@ -2,20 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state, {subscribe} from "./redux/state";
-import {addMessage, addPost, updateNewPostText, updateNewMessageText} from "./redux/state";
+import {store} from "./redux/state";
 
-export const renderEntireTree = (state:any) => {
+
+export const renderEntireTree = () => {
     ReactDOM.render(
         <App
-            state={state}
-            addPost={addPost}
+            store={store}
+            /*addPost={addPost}
             addMessage={addMessage}
             updateNewPostText={updateNewPostText}
-            updateNewMessageText={updateNewMessageText}/>,
+            updateNewMessageText={updateNewMessageText}*//>,
         document.getElementById('root')
     );
 }
 
-renderEntireTree(state);
-subscribe(renderEntireTree)
+renderEntireTree();
+store.subscribe(renderEntireTree)

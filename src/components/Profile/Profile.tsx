@@ -3,7 +3,7 @@ import s from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
-import {PostsDataType, PostType, updateNewPostText} from "../../redux/state";
+import {PostsDataType} from "../../redux/state";
 
 type ProfileType = {
     postsData: PostsDataType,

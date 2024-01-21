@@ -1,6 +1,3 @@
-
-
-
 export type PostType = {
     message: string
     id: number
@@ -27,7 +24,7 @@ export type DialogsPageType = {
     newMessageText: string
 }
 export type FriendType = {
-    id:number,
+    id: number,
     name: string,
 }
 export type FriendsType = FriendType[]
@@ -39,75 +36,91 @@ export type StateType = {
     dialogsPage: DialogsPageType,
     sidebar: SidebarType
 }
-
-let renderEntireTree= (state:any)=>{
-    console.log('state changed')
+export type StoreType = {
+    _state: StateType,
+    addPost: () => void,
+    addMessage: () => void,
+    updateNewPostText: (newText: string) => void
+    updateNewMessageText: (newText: string) => void
+    subscribe:(observer: () => void) => void
+    _renderEntireTree:()=>void,
+    getState:()=>StateType
 }
-let state: StateType = {
-    profilePage: {
-        postsData: [
-            {id: 1, message: "Hello, my friend!", likesCount: 6},
-            {id: 2, message: "How are you?", likesCount: 3},
-            {id: 3, message: "How ?", likesCount: 5},
-            {id: 4, message: "you?", likesCount: 4},
-        ],
-        newPostText: ''
+export const store: StoreType = {
+    _state: {
+        profilePage: {
+            postsData: [
+                {id: 1, message: "Hello, my friend!", likesCount: 6},
+                {id: 2, message: "How are you?", likesCount: 3},
+                {id: 3, message: "How ?", likesCount: 5},
+                {id: 4, message: "you?", likesCount: 4},
+            ],
+            newPostText: ''
+        },
+        dialogsPage: {
+            dialogsData: [
+                {id: 1, name: "Dima"},
+                {id: 2, name: "Veronika"},
+                {id: 3, name: "Viktoria"},
+                {id: 4, name: "Ivan"},
+                {id: 5, name: "Alex"},
+                {id: 6, name: "Roman"},
+            ],
+            messagesData: [
+                {id: 1, message: "HELLO!"},
+                {id: 2, message: "HELLOeeee eeeeee!"},
+                {id: 3, message: "HELLOwwwww wwww!"},
+                {id: 4, message: "HELLOrrrrr rrrr!"},
+            ],
+            newMessageText: 'NEW-MESSAGE'
+        },
+        sidebar: {
+            friends: [
+                {id: 1, name: "Dima"},
+                {id: 2, name: "Veronika"},
+                {id: 3, name: "Viktoria"},
+            ],
+        }
     },
-    dialogsPage: {
-        dialogsData: [
-            {id: 1, name: "Dima"},
-            {id: 2, name: "Veronika"},
-            {id: 3, name: "Viktoria"},
-            {id: 4, name: "Ivan"},
-            {id: 5, name: "Alex"},
-            {id: 6, name: "Roman"},
-        ],
-        messagesData: [
-            {id: 1, message: "HELLO!"},
-            {id: 2, message: "HELLOeeee eeeeee!"},
-            {id: 3, message: "HELLOwwwww wwww!"},
-            {id: 4, message: "HELLOrrrrr rrrr!"},
-        ],
-        newMessageText: 'NEW-MESSAGE'
+    addPost() {
+        const newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+            likesCount: 3
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._renderEntireTree()
     },
-    sidebar: {
-        friends: [
-            {id: 1, name: "Dima"},
-            {id: 2, name: "Veronika"},
-            {id: 3, name: "Viktoria"},
-        ],
+    addMessage() {
+        const newMessage = {
+            id: this._state.dialogsPage.messagesData.length + 1,
+            message: this._state.dialogsPage.newMessageText,
+        }
+        this._state.dialogsPage.messagesData.push(newMessage)
+        this._renderEntireTree()
+    },
+    updateNewPostText(newText: string) {
+        this._state.profilePage.newPostText = newText
+        this._renderEntireTree()
+    },
+    updateNewMessageText(newText: string) {
+        this._state.dialogsPage.newMessageText = newText
+        this._renderEntireTree()
+        console.log(this._state)
+    },
+    subscribe(observer: () => void) {
+        this._renderEntireTree = observer
+    },
+    _renderEntireTree () {
+        console.log('state changed')
+    },
+    getState(){
+        return this._state
     }
 }
 
-export const addPost = ()=>{
-    const newPost = {
-        id:5,
-        message:state.profilePage.newPostText,
-        likesCount:3
-    }
-    state.profilePage.postsData.push(newPost)
-    state.profilePage.newPostText =''
-    renderEntireTree(state)
-}
-export const addMessage = ()=>{
-    const newMessage = {
-        id:state.dialogsPage.messagesData.length+1,
-        message:state.dialogsPage.newMessageText,
-    }
-    state.dialogsPage.messagesData.push(newMessage)
-    renderEntireTree(state)
-}
-export const updateNewPostText = (newText:string)=>{
-    state.profilePage.newPostText = newText
-    renderEntireTree(state)
-}
-export const updateNewMessageText = (newText:string)=>{
-    state.dialogsPage.newMessageText = newText
-    renderEntireTree(state)
-    console.log(state)
-}
 
-export const subscribe =(observer:any)=>{
-    renderEntireTree = observer
-}
-export default state;
+
+
+export default store;

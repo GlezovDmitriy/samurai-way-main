@@ -36,8 +36,9 @@ function App(props: AppType) {
                            render={() =>
                                <Dialogs dialogsData={state.dialogsPage.dialogsData}
                                         messagesData={state.dialogsPage.messagesData}
-                                        addMessage={props.store.addMessage.bind(props.store)}
-                                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                                        /*addMessage={props.store.addMessage.bind(props.store)}
+                                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}*/
+                                        dispatch={props.store.dispatch.bind(props.store)}
                                         newMessageText={state.dialogsPage.newMessageText}
                                />
                            }

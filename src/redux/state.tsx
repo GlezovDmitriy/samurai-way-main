@@ -46,15 +46,27 @@ export type UpdatePostActionType = {
 }
 export type AddMessageActionType = {
     type: 'ADD-MESSAGE',
+    newMessageText: string
+}
+export type UpdateMessageActionType = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT',
+    newText: string,
 }
 export type ActionsTypes = AddPostActionType | UpdatePostActionType
-    | AddMessageActionType
+    | AddMessageActionType | UpdateMessageActionType
+
+export const addPostAC = (newPostText: string): AddPostActionType => {
+    return {
+        type: 'ADD-POST',
+        newPostText: newPostText
+    }
+}
 export type StoreType = {
     _state: StateType,
     /*addPost: () => void,*/
-    addMessage: () => void,
-    /*updateNewPostText: (newText: string) => void*/
-    updateNewMessageText: (newText: string) => void
+    /*addMessage: () => void,
+    /!*updateNewPostText: (newText: string) => void*!/
+    updateNewMessageText: (newText: string) => void*/
     subscribe: (observer: () => void) => void
     _renderEntireTree: () => void,
     getState: () => StateType,
@@ -106,23 +118,23 @@ export const store: StoreType = {
         this._state.profilePage.newPostText = ''
         this._renderEntireTree()
     },*/
-    addMessage() {
+    /*addMessage() {
         const newMessage = {
             id: this._state.dialogsPage.messagesData.length + 1,
             message: this._state.dialogsPage.newMessageText,
         }
         this._state.dialogsPage.messagesData.push(newMessage)
         this._renderEntireTree()
-    },
+    },*/
     /*updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._renderEntireTree()
     },*/
-    updateNewMessageText(newText: string) {
+    /*updateNewMessageText(newText: string) {
         this._state.dialogsPage.newMessageText = newText
         this._renderEntireTree()
         console.log(this._state)
-    },
+    },*/
     subscribe(observer: () => void) {
         this._renderEntireTree = observer
     },
@@ -146,6 +158,17 @@ export const store: StoreType = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
             this._renderEntireTree()
+        } else if (action.type === 'ADD-MESSAGE') {
+            const newMessage = {
+                id: this._state.dialogsPage.messagesData.length + 1,
+                message: action.newMessageText,
+            }
+            this._state.dialogsPage.messagesData.push(newMessage)
+            this._renderEntireTree()
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText
+            this._renderEntireTree()
+            console.log(this._state)
         }
     }
 }

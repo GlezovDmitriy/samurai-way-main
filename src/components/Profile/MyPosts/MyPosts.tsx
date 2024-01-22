@@ -1,21 +1,14 @@
 import React, {ChangeEvent, ChangeEventHandler, useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ActionsTypes, PostsDataType, PostType} from "../../../redux/state";
+import {ActionsTypes, addPostAC, AddPostActionType, PostsDataType, PostType} from "../../../redux/state";
 
 type MyPostsType = {
     postsData: PostsDataType,
     newPostText: string,
     dispatch:(action:ActionsTypes)=>void,
-
 }
 export const MyPosts = (props: MyPostsType) => {
-    /*let postsData = [
-        {id: 1, message: "Hello, my friend!", likesCount: 6},
-        {id: 2, message: "How are you?", likesCount: 3},
-        {id: 3, message: "How ?", likesCount: 5},
-        {id: 4, message: "you?", likesCount: 4},
-    ]*/
     let postsElements = props.postsData.map(p => {
         return (
             <Post massage={p.message} likeCount={p.likesCount}/>
@@ -24,7 +17,8 @@ export const MyPosts = (props: MyPostsType) => {
 
     let newPostElement = useRef<HTMLTextAreaElement>(null)
     const addPost = () => {
-        props.dispatch({type:'ADD-POST',newPostText:props.newPostText})
+        /*props.dispatch({type:'ADD-POST',newPostText:props.newPostText})*/
+        props.dispatch(addPostAC(props.newPostText))
 
     }
     let onPostChange = ()=>{

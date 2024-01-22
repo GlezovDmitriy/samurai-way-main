@@ -1,16 +1,17 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import state, {DialogsDataType, MessagesDataType} from "../../redux/state";
+import state, {ActionsTypes, DialogsDataType, MessagesDataType} from "../../redux/state";
 import React, {useRef} from "react";
 
 
 type DialogsType = {
     dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
-    addMessage:(message:string)=>void,
+    /*addMessage:(message:string)=>void,*/
     newMessageText:string,
-    updateNewMessageText:(text:string)=>void
+    /*updateNewMessageText:(text:string)=>void*/
+    dispatch:(action:ActionsTypes)=>void,
 }
 /*export type DialogItemType = {
     id: number
@@ -54,15 +55,15 @@ export const Dialogs = (props: DialogsType) => {
 
         if (newMessage.current!== null){
             let text = newMessage.current.value
-            props.addMessage(text)
-            props.updateNewMessageText('');
+            props.dispatch({type:'ADD-MESSAGE', newMessageText:text})
+            props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText:''})
         }
 
     }
     let onMessageChange=()=>{
         if (newMessage.current!== null){
             let text = newMessage.current.value
-           props.updateNewMessageText(text)
+            props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText:text})
         }
     }
     return (

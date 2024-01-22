@@ -1,7 +1,7 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import state, {ActionsTypes, DialogsDataType, MessagesDataType} from "../../redux/state";
+import state, {ActionsTypes, addMessageAC, DialogsDataType, MessagesDataType} from "../../redux/state";
 import React, {useRef} from "react";
 
 
@@ -55,7 +55,7 @@ export const Dialogs = (props: DialogsType) => {
 
         if (newMessage.current!== null){
             let text = newMessage.current.value
-            props.dispatch({type:'ADD-MESSAGE', newMessageText:text})
+            props.dispatch(addMessageAC(props.newMessageText))
             props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText:''})
         }
 

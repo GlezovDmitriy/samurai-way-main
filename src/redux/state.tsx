@@ -61,6 +61,27 @@ export const addPostAC = (newPostText: string): AddPostActionType => {
         newPostText: newPostText
     }
 }
+export const updatePostAC = (newText: string): UpdatePostActionType => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: newText
+    }
+}
+export const addMessageAC = (newMessageText: string): AddMessageActionType => {
+    return {
+        type: 'ADD-MESSAGE',
+        newMessageText: newMessageText
+    }
+}
+export const updateMessageAC = (newText: string): UpdateMessageActionType => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE-TEXT',
+        newText: newText
+    }
+}
+
+
+
 export type StoreType = {
     _state: StateType,
     /*addPost: () => void,*/

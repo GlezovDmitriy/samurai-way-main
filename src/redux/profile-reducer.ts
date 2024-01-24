@@ -1,5 +1,12 @@
-import {ActionsTypes, ProfilePageType} from "./state";
-
+import {ActionsTypes, ProfilePageType,} from "./state";
+export type AddPostActionType = {
+    type: 'ADD-POST',
+    newPostText: string,
+}
+export type UpdatePostActionType = {
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: string,
+}
 const profileReducer = (state: ProfilePageType , action: ActionsTypes) =>{
     switch (action.type){
         case 'ADD-POST':
@@ -17,5 +24,17 @@ const profileReducer = (state: ProfilePageType , action: ActionsTypes) =>{
         default:
             return state
     }
+}
+export const addPostAC = (newPostText: string): AddPostActionType => {
+    return {
+        type: 'ADD-POST',
+        newPostText: newPostText
+    } as const
+}
+export const updatePostAC = (newText: string): UpdatePostActionType => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: newText
+    } as const
 }
 export default profileReducer;

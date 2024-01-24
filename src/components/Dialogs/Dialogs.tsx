@@ -1,42 +1,18 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import state, {ActionsTypes, addMessageAC, DialogsDataType, MessagesDataType} from "../../redux/state";
+import {ActionsTypes, DialogsDataType, MessagesDataType} from "../../redux/state";
 import React, {useRef} from "react";
+import {addMessageAC} from "../../redux/dialogs-reducer";
 
 
 type DialogsType = {
     dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
-    /*addMessage:(message:string)=>void,*/
-    newMessageText:string,
-    /*updateNewMessageText:(text:string)=>void*/
-    dispatch:(action:ActionsTypes)=>void,
+    newMessageText: string,
+    dispatch: (action: ActionsTypes) => void,
 }
-/*export type DialogItemType = {
-    id: number
-    name: string
-}
-export type MessageType = {
-    message: string
-    id: number
-}*/
-
 export const Dialogs = (props: DialogsType) => {
-    /* let dialogsData = [
-         {id: 1, name: "Dima"},
-         {id: 2, name: "Veronika"},
-         {id: 3, name: "Viktoria"},
-         {id: 4, name: "Ivan"},
-         {id: 5, name: "Alex"},
-         {id: 6, name: "Roman"},
-     ]
-     let messagesData = [
-         {id: 1, message: "HELLO!"},
-         {id: 2, message: "HELLOeeee eeeeee!"},
-         {id: 3, message: "HELLOwwwww wwww!"},
-         {id: 4, message: "HELLOrrrrr rrrr!"},
-     ]*/
     let dialogElements = props.dialogsData
         .map((d) => {
                 return (
@@ -51,18 +27,18 @@ export const Dialogs = (props: DialogsType) => {
             )
         })
     let newMessage = useRef<HTMLTextAreaElement>(null)
-    const addMessage = ()=>{
-        if (newMessage.current!== null){
+    const addMessage = () => {
+        if (newMessage.current !== null) {
             let text = newMessage.current.value
             props.dispatch(addMessageAC(props.newMessageText))
-            props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText:''})
+            props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: ''})
         }
 
     }
-    let onMessageChange=()=>{
-        if (newMessage.current!== null){
+    let onMessageChange = () => {
+        if (newMessage.current !== null) {
             let text = newMessage.current.value
-            props.dispatch({type:'UPDATE-NEW-MESSAGE-TEXT', newText:text})
+            props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text})
         }
     }
     return (
@@ -78,7 +54,8 @@ export const Dialogs = (props: DialogsType) => {
                       onChange={onMessageChange}
             />
             <button onClick={addMessage}
-            disabled={props.newMessageText ==''}>ADD MESSAGE</button>
+                    disabled={props.newMessageText == ''}>ADD MESSAGE
+            </button>
         </div>
 
     )

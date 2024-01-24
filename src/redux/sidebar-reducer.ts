@@ -1,4 +1,4 @@
-import profileReducer from "./profile-reducer";
+
 import {ActionsTypes, SidebarType} from "./state";
 
 const sidebarReducer = (state: SidebarType, action: ActionsTypes) =>{

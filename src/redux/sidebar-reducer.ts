@@ -2,7 +2,10 @@ import profileReducer from "./profile-reducer";
 import {ActionsTypes, SidebarType} from "./state";
 
 const sidebarReducer = (state: SidebarType, action: ActionsTypes) =>{
-    return state
+    switch (action.type){
+        default:return state
+    }
+
 }
 
 export default sidebarReducer;

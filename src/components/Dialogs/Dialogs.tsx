@@ -52,7 +52,6 @@ export const Dialogs = (props: DialogsType) => {
         })
     let newMessage = useRef<HTMLTextAreaElement>(null)
     const addMessage = ()=>{
-
         if (newMessage.current!== null){
             let text = newMessage.current.value
             props.dispatch(addMessageAC(props.newMessageText))

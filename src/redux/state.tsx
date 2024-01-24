@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
 export type PostType = {
     message: string
     id: number
@@ -166,10 +170,15 @@ export const store: StoreType = {
         return this._state
     },
     dispatch(action: ActionsTypes) {
-        if (action.type === 'ADD-POST') {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        this._renderEntireTree()
+
+       /* if (action.type === 'ADD-POST') {
             const newPost = {
                 id: 5,
-                /*message: this._state.profilePage.newPostText,*/
+                /!*message: this._state.profilePage.newPostText,*!/
                 message: action.newPostText,
                 likesCount: 3
             }
@@ -190,7 +199,7 @@ export const store: StoreType = {
             this._state.dialogsPage.newMessageText = action.newText
             this._renderEntireTree()
             console.log(this._state)
-        }
+        }*/
     }
 }
 

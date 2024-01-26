@@ -9,11 +9,12 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/news";
 import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
-import {ActionsTypes, StoreType} from "./redux/state";
+import {ActionsTypes} from "./redux/store";
 import {MyFriends} from "./components/Friends/MyFriends";
+import {StoreReduxType} from "./redux/redux-store";
 
 type AppType = {
-    store:StoreType,
+    store:StoreReduxType,
     dispatch:(action:ActionsTypes)=>void,
     /*addPost:()=>void,
     addMessage:(message:string)=>void,
@@ -58,7 +59,7 @@ function App(props: AppType) {
                     <Route path='/settings'
                            component={Settings}/>
                     <Route path='/friends'
-                           render={() => <MyFriends friends ={props.store._state.sidebar.friends}/>}/>
+                           render={() => <MyFriends friends ={state.sidebar.friends}/>}/>
 
                 </div>
             </div>

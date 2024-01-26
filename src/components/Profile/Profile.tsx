@@ -3,7 +3,8 @@ import s from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
-import {ActionsTypes, PostsDataType, store} from "../../redux/state";
+import {ActionsTypes} from "../../redux/store";
+import {PostsDataType} from "../../redux/types";
 
 type ProfileType = {
     postsData: PostsDataType,

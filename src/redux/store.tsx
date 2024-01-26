@@ -1,40 +1,8 @@
 import profileReducer, {AddPostActionType, UpdatePostActionType} from "./profile-reducer";
 import dialogsReducer, {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import {DialogsPageType, ProfilePageType, SidebarType} from "./types";
 
-export type PostType = {
-    message: string
-    id: number
-    likesCount: number
-}
-export type PostsDataType = PostType[]
-export type ProfilePageType = {
-    postsData: PostsDataType,
-    newPostText: string
-}
-export type DialogType = {
-    id: number,
-    name: string
-}
-export type DialogsDataType = DialogType[]
-export type MessageType = {
-    id: number,
-    message: string
-}
-export type MessagesDataType = MessageType[]
-export type DialogsPageType = {
-    dialogsData: DialogsDataType,
-    messagesData: MessagesDataType,
-    newMessageText: string
-}
-export type FriendType = {
-    id: number,
-    name: string,
-}
-export type FriendsType = FriendType[]
-export type SidebarType = {
-    friends: FriendsType
-}
 export type StateType = {
     profilePage: ProfilePageType,
     dialogsPage: DialogsPageType,
@@ -46,10 +14,6 @@ export type ActionsTypes = UpdateMessageActionType| AddMessageActionType
 
 export type StoreType = {
     _state: StateType,
-    /*addPost: () => void,*/
-    /*addMessage: () => void,
-    /!*updateNewPostText: (newText: string) => void*!/
-    updateNewMessageText: (newText: string) => void*/
     subscribe: (observer: () => void) => void
     _renderEntireTree: () => void,
     getState: () => StateType,

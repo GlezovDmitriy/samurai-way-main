@@ -9,7 +9,7 @@ export const renderEntireTree = () => {
     ReactDOM.render(
         <App
             store={store}
-            dispatch={store.dispatch.bind(store)}
+           /* dispatch={store.dispatch.bind(store)}*/
             />,
         document.getElementById('root')
     );

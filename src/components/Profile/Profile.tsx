@@ -5,20 +5,21 @@ import {Avatar} from "./Avatar/Avatar";
 import {ProfileInfo} from "./ProfileInfo/profileInfo";
 import {ActionsTypes} from "../../redux/store";
 import {PostsDataType} from "../../redux/types";
+import {StoreReduxType} from "../../redux/redux-store";
+import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 type ProfileType = {
-    postsData: PostsDataType,
-    newPostText: string,
-    dispatch:(action:ActionsTypes)=>void,
+    store:StoreReduxType
 }
 export const Profile = (props: ProfileType) => {
+    let state = props.store.getState();
     return (
         <div className={s.content}>
             <ProfileInfo/>
             <Avatar/>
-            <MyPosts postsData={props.postsData}
-                     newPostText={props.newPostText}
-                     dispatch={props.dispatch}/>
+            <MyPostsContainer store={props.store}
+                              postsData={state.profilePage?.postsData} //берем из стэйта, который получили выше из стора.
+                              newPostText={state.profilePage?.newPostText}/>
 
         </div>
     );

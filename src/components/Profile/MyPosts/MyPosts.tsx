@@ -11,8 +11,8 @@ type MyPostsType = {
     dispatch:(action:ActionsTypes)=>void,*/
     newPostText: string,
     postsData: PostsDataType,
-    addPost:()=>void,
-    updatePost:(text:string)=>void
+    addPost: () => void,
+    updatePost: (text: string) => void
 }
 export const MyPosts = (props: MyPostsType) => {
     let postsElements = props.postsData.map(p => {
@@ -25,11 +25,10 @@ export const MyPosts = (props: MyPostsType) => {
     const onAddPost = () => {
         props.addPost();
     }
-    let onPostChange = ()=>{
-        if(newPostElement.current!== null){
+    let onPostChange = () => {
+        if (newPostElement.current !== null) {
             let text = newPostElement.current.value;
             props.updatePost(text)
-            /*props.dispatch(updatePostAC(text))*/
 
         }
 
@@ -44,12 +43,12 @@ export const MyPosts = (props: MyPostsType) => {
                 <textarea /*className={s.textarea}
                           placeholder={"typing message..."}*/
                     onChange={onPostChange}
-                          ref={newPostElement}
-                value={props.newPostText}></textarea>
+                    ref={newPostElement}
+                    value={props.newPostText}></textarea>
                 <div>
                     <button className={s.button}
                             onClick={onAddPost}
-                    disabled={props.newPostText == ''}> Add post
+                            disabled={props.newPostText == ''}> Add post
                     </button>
                 </div>
             </div>

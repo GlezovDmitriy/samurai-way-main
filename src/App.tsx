@@ -15,12 +15,6 @@ import {StoreReduxType} from "./redux/redux-store";
 
 type AppType = {
     store:StoreReduxType,
-    dispatch:(action:ActionsTypes)=>void,
-    /*addPost:()=>void,
-    addMessage:(message:string)=>void,
-    state: StateType,
-    updateNewPostText:(text:string)=>void
-    updateNewMessageText:(text:string)=>void*/
 }
 
 function App(props: AppType) {
@@ -47,11 +41,7 @@ function App(props: AppType) {
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
                         //component={Profile}
-                           render={() => <Profile postsData={state.profilePage.postsData}
-                                                  newPostText={state.profilePage.newPostText}
-                                                  dispatch={props.store.dispatch.bind(props.store)}
-                                                  /*addPost={props.store.addPost.bind(props.store)}
-                                                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}*//>}/>
+                           render={() => <Profile store={props.store}/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

@@ -1,18 +1,13 @@
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {ActionsTypes} from "../../redux/store";
 import React, {ChangeEvent, useRef} from "react";
-import {addMessageAC} from "../../redux/dialogs-reducer";
-import {DialogsDataType, DialogsPageType, MessagesDataType} from "../../redux/types";
+import { DialogsPageType} from "../../redux/types";
 
 
-type DialogsType = {
+export type DialogsType = {
     updateMessageBody: (text: string) => void
     sendMessage: () => void
-    /*dialogsData: DialogsDataType,
-    messagesData: MessagesDataType,
-    newMessageText: string,*/
     dialogsPage: DialogsPageType
 
 }

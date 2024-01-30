@@ -1,14 +1,9 @@
-import React, {ChangeEvent, ChangeEventHandler, useRef} from 'react';
+import React, {useRef} from 'react';
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ActionsTypes} from "../../../redux/store";
-import {addPostAC, updatePostAC} from "../../../redux/profile-reducer";
 import {PostsDataType} from "../../../redux/types";
 
 type MyPostsType = {
-    /*
-
-    dispatch:(action:ActionsTypes)=>void,*/
     newPostText: string,
     postsData: PostsDataType,
     addPost: () => void,
@@ -40,8 +35,8 @@ export const MyPosts = (props: MyPostsType) => {
                 My post
             </div>
             <div>
-                <textarea /*className={s.textarea}
-                          placeholder={"typing message..."}*/
+                <textarea className={s.textarea}
+                          placeholder={"typing message..."}
                     onChange={onPostChange}
                     ref={newPostElement}
                     value={props.newPostText}></textarea>

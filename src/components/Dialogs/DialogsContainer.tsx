@@ -1,23 +1,21 @@
-import s from './Dialogs.module.css'
-import {DialogItem} from "./DialogItem/DialogItem";
-import {Message} from "./Message/Message";
-import {ActionsTypes} from "../../redux/store";
-import React, {useRef} from "react";
+import React from "react";
 import {addMessageAC, updateMessageAC} from "../../redux/dialogs-reducer";
-import {DialogsDataType, MessagesDataType} from "../../redux/types";
-import {StoreReduxType} from "../../redux/redux-store";
+import {AppStateType, StoreReduxType} from "../../redux/redux-store";
 import {Dialogs} from "./Dialogs";
+import {connect} from "react-redux";
+import {DialogsPageType} from "../../redux/types";
+import {Dispatch} from "redux";
+
 
 
 type DialogsContainerType = {
     store:StoreReduxType,
-    /*newMessageText:string*/
 }
 export const DialogsContainer = (props: DialogsContainerType) => {
     let state = props.store.getState().dialogsPage
 
     const sendMessage = () => {
-       props.store.dispatch(addMessageAC(state?.newMessageText))
+       props.store.dispatch(addMessageAC())
 
     }
     let updateMessageBody = (text:string) => {
@@ -30,3 +28,22 @@ export const DialogsContainer = (props: DialogsContainerType) => {
         />)
 
 }
+type MapStateType = {
+    dialogsPage:DialogsPageType
+}
+type MapDispatchPropsType={
+    updateMessageBody:(text:string)=>void,
+    sendMessage:()=>void
+}
+let mapStateToProps =(state:AppStateType):MapStateType=> {
+    return{
+        dialogsPage: state.dialogsPage
+    }
+}
+let mapDispatchToProps =(dispatch:Dispatch):MapDispatchPropsType=> {
+    return{
+        updateMessageBody:(text:string)=>{dispatch(updateMessageAC(text))},
+        sendMessage:()=>{dispatch(addMessageAC())}
+    }
+}
+const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs )

@@ -4,7 +4,8 @@ import {DialogsPageType} from "./types";
 
 export type AddMessageActionType = {
     type: 'ADD-MESSAGE',
-    newMessageText: string
+    /*newMessageText: string*/
+
 }
 export type UpdateMessageActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT',
@@ -33,7 +34,8 @@ const dialogsReducer = (state:DialogsPageType = initialState, action:ActionsType
         case 'ADD-MESSAGE':
             const newMessage = {
                 id: state.messagesData.length + 1,
-                message: action.newMessageText,
+                /*message: action.newMessageText,*/
+                message: state.newMessageText,
             }
             state.messagesData.push(newMessage)
             return state
@@ -44,10 +46,11 @@ const dialogsReducer = (state:DialogsPageType = initialState, action:ActionsType
             return state
     }
 }
-export const addMessageAC = (newMessageText: string): AddMessageActionType => {
+export const addMessageAC = (): AddMessageActionType => {
     return {
         type: 'ADD-MESSAGE',
-        newMessageText: newMessageText
+        /*newMessageText: newMessageText*/
+
     } as const
 }
 export const updateMessageAC = (newText: string): UpdateMessageActionType => {

@@ -11,7 +11,8 @@ import {Music} from "./components/Music/music";
 import {Settings} from "./components/Settings/settings";
 import {ActionsTypes} from "./redux/store";
 import {MyFriends} from "./components/Friends/MyFriends";
-import {StoreReduxType} from "./redux/redux-store";
+import  {StoreReduxType} from "./redux/redux-store";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 type AppType = {
     store:StoreReduxType,
@@ -29,12 +30,7 @@ function App(props: AppType) {
                     <Route path='/dialogs'
                         //component={Dialogs dialogsData = {props.dialogsData}}/>
                            render={() =>
-                               <Dialogs dialogsData={state.dialogsPage.dialogsData}
-                                        messagesData={state.dialogsPage.messagesData}
-                                        /*addMessage={props.store.addMessage.bind(props.store)}
-                                        updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}*/
-                                        dispatch={props.store.dispatch.bind(props.store)}
-                                        newMessageText={state.dialogsPage.newMessageText}
+                               <DialogsContainer store={props.store}
                                />
                            }
                     />

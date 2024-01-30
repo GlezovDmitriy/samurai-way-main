@@ -2,45 +2,44 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {ActionsTypes} from "../../redux/store";
-import React, {useRef} from "react";
+import React, {ChangeEvent, useRef} from "react";
 import {addMessageAC} from "../../redux/dialogs-reducer";
-import {DialogsDataType, MessagesDataType} from "../../redux/types";
+import {DialogsDataType, DialogsPageType, MessagesDataType} from "../../redux/types";
 
 
 type DialogsType = {
-    dialogsData: DialogsDataType,
+    updateMessageBody: (text: string) => void
+    sendMessage: () => void
+    /*dialogsData: DialogsDataType,
     messagesData: MessagesDataType,
-    newMessageText: string,
-    dispatch: (action: ActionsTypes) => void,
+    newMessageText: string,*/
+    dialogsPage: DialogsPageType
+
 }
 export const Dialogs = (props: DialogsType) => {
-    let dialogElements = props.dialogsData
+    let state = props.dialogsPage
+    let dialogElements = state.dialogsData
         .map((d) => {
                 return (
                     <DialogItem id={d.id} name={d.name}/>
                 )
             }
         )
-    let messagesElements = props.messagesData
+    let messagesElements = state.messagesData
         .map((m) => {
             return (
                 <Message id={m.id} message={m.message}/>
             )
         })
     let newMessage = useRef<HTMLTextAreaElement>(null)
-    const addMessage = () => {
-        if (newMessage.current !== null) {
-            let text = newMessage.current.value
-            props.dispatch(addMessageAC(props.newMessageText))
-            props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: ''})
-        }
-
+    let addMessage = () => {
+        props.sendMessage()
+        state.newMessageText = ''
     }
-    let onMessageChange = () => {
-        if (newMessage.current !== null) {
-            let text = newMessage.current.value
-            props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: text})
-        }
+    let onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.target.value
+        props.updateMessageBody(text)
+
     }
     return (
         <div className={s.dialogs}>
@@ -51,11 +50,11 @@ export const Dialogs = (props: DialogsType) => {
                 {messagesElements}
             </div>
             <textarea ref={newMessage}
-                      value={props.newMessageText}
+                      value={state.newMessageText}
                       onChange={onMessageChange}
             />
             <button onClick={addMessage}
-                    disabled={props.newMessageText == ''}>ADD MESSAGE
+                    disabled={state.newMessageText == ''}>ADD MESSAGE
             </button>
         </div>
 

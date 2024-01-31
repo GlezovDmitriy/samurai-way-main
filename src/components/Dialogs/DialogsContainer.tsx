@@ -11,7 +11,7 @@ import {Dispatch} from "redux";
 type DialogsContainerType = {
     store:StoreReduxType,
 }
-export const DialogsContainer = (props: DialogsContainerType) => {
+/*export const DialogsContainer = (props: DialogsContainerType) => {
     let state = props.store.getState().dialogsPage
 
     const sendMessage = () => {
@@ -27,7 +27,7 @@ export const DialogsContainer = (props: DialogsContainerType) => {
         dialogsPage={state}
         />)
 
-}
+}*/
 type MapStateType = {
     dialogsPage:DialogsPageType
 }
@@ -35,6 +35,7 @@ type MapDispatchPropsType={
     updateMessageBody:(text:string)=>void,
     sendMessage:()=>void
 }
+export type DialogsPropsType = MapStateType & MapDispatchPropsType
 let mapStateToProps =(state:AppStateType):MapStateType=> {
     return{
         dialogsPage: state.dialogsPage
@@ -46,4 +47,4 @@ let mapDispatchToProps =(dispatch:Dispatch):MapDispatchPropsType=> {
         sendMessage:()=>{dispatch(addMessageAC())}
     }
 }
-const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs )
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs )

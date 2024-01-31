@@ -30,7 +30,7 @@ function App(props: AppType) {
                     <Route path='/dialogs'
                         //component={Dialogs dialogsData = {props.dialogsData}}/>
                            render={() =>
-                               <DialogsContainer store={props.store}
+                               <DialogsContainer /*store={props.store}*/
                                />
                            }
                     />

@@ -2,7 +2,7 @@ import {ActionsTypes, } from "./store";
 import {ProfilePageType} from "./types";
 export type AddPostActionType = {
     type: 'ADD-POST',
-    newPostText: string,
+    /*newPostText: string,*/
 }
 export type UpdatePostActionType = {
     type: 'UPDATE-NEW-POST-TEXT',
@@ -23,7 +23,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
         case 'ADD-POST':
             const newPost = {
                 id: 5,
-                message: action.newPostText,
+                message: state.newPostText,
                 likesCount: 3
             }
             state.postsData.push(newPost)
@@ -36,10 +36,10 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
             return state
     }
 }
-export const addPostAC = (newPostText: string): AddPostActionType => {
+export const addPostAC = (): AddPostActionType => {
     return {
         type: 'ADD-POST',
-        newPostText: newPostText
+        /*newPostText: newPostText*/
     } as const
 }
 export const updatePostAC = (newText: string): UpdatePostActionType => {

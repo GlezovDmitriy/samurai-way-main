@@ -3,15 +3,11 @@ import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import React, {ChangeEvent, useRef} from "react";
 import { DialogsPageType} from "../../redux/types";
+import {DialogsPropsType} from "./DialogsContainer";
 
 
-export type DialogsType = {
-    updateMessageBody: (text: string) => void
-    sendMessage: () => void
-    dialogsPage: DialogsPageType
 
-}
-export const Dialogs = (props: DialogsType) => {
+export const Dialogs = (props: DialogsPropsType) => {
     let state = props.dialogsPage
     let dialogElements = state.dialogsData
         .map((d) => {

@@ -17,9 +17,7 @@ export const Profile = (props: ProfileType) => {
         <div className={s.content}>
             <ProfileInfo/>
             <Avatar/>
-            <MyPostsContainer store={props.store}
-                              postsData={state.profilePage?.postsData} //берем из стэйта, который получили выше из стора.
-                              newPostText={state.profilePage?.newPostText}/>
+            <MyPostsContainer/>
 
         </div>
     );

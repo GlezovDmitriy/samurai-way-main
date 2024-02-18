@@ -31,23 +31,29 @@ let initialState = {
 }
 export type InitialStateType = typeof initialState
 const dialogsReducer = (state:InitialStateType = initialState, action:ActionsTypes): InitialStateType=>{
+    let stateCopy = {...state, messagesData:[...state.messagesData]}
+
     switch (action.type){
-        case 'ADD-MESSAGE':{
+        case 'ADD-MESSAGE':
             const newMessage = {
                 id: state.messagesData.length + 1,
                 /*message: action.newMessageText,*/
                 message: state.newMessageText,
             }
-            let stateCopy = {...state}
-            stateCopy.messagesData = [...state.messagesData]
+            stateCopy = {...state,
+            newMessageText: '',
+            messagesData: [...state.messagesData, newMessage]}
+           /* stateCopy.messagesData = [...state.messagesData]
             stateCopy.messagesData.push(newMessage)
-            stateCopy.newMessageText = ''
+            stateCopy.newMessageText = ''*/
             return stateCopy
-        }
+
 
         case 'UPDATE-NEW-MESSAGE-TEXT':{
-            let stateCopy = {...state}
-            stateCopy.newMessageText = action.newText
+            /*let stateCopy = {...state}
+            stateCopy.newMessageText = action.newText*/
+            stateCopy = {...state,
+            newMessageText: action.newText}
             return stateCopy
         }
 

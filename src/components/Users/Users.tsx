@@ -1,8 +1,7 @@
 import React from "react";
-type UsersType ={
+import {UsersPropsType} from "../../redux/users-reducer";
 
-}
-export const Users = (props: UsersType)=>{
+export const Users = (props: UsersPropsType)=>{
     return <div>
         !!!USERS!!!
     </div>

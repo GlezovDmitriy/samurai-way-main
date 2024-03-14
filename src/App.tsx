@@ -13,6 +13,7 @@ import {ActionsTypes} from "./redux/store";
 import {MyFriends} from "./components/Friends/MyFriends";
 import  {StoreReduxType} from "./redux/redux-store";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import {Users} from "./components/Users/Users";
 
 type AppType = {
     store:StoreReduxType,
@@ -34,10 +35,14 @@ function App(props: AppType) {
                                />
                            }
                     />
+
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
                     <Route path='/profile'
                         //component={Profile}
                            render={() => <Profile store={props.store}/>}/>
+                    <Route path='/users'
+                        //component={Profile}
+                           render={() => <Users/>}/>
                     <Route path='/news'
                            component={News}/>
                     <Route path='/music'

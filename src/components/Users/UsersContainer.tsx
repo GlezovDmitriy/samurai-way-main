@@ -4,13 +4,22 @@ import React from "react";
 import {AppStateType} from "../../redux/redux-store";
 import {followAC, setUsersAC, unfollowAC, UsersPropsType, UserType} from "../../redux/users-reducer";
 import {Dispatch} from "redux";
-
-let mapStateToProps = (state:AppStateType)=>{
+import {PostsDataType} from "../../redux/types";
+type mapStateToPropsType = {
+    users:  UserType[]
+}
+type mapDispatchToPropsType = {
+    follow: (userId: number) => void
+    unfollow:(userId: number) => void
+    setUsers:(users: UserType[])=>void
+}
+export type MyUsersType = mapStateToPropsType & mapDispatchToPropsType
+let mapStateToProps = (state:AppStateType): mapStateToPropsType=>{
     return{
         users: state.usersPage.users
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch)=>{
+let mapDispatchToProps = (dispatch: Dispatch):mapDispatchToPropsType=>{
     return{
         follow: (userId: number) =>{
             dispatch(followAC(userId))

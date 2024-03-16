@@ -7,7 +7,8 @@ type LocationType = {
 }
 export type UserType = {
     id: number,
-    followed: boolean
+    photoUrl:string,
+    followed: boolean,
     fullName: string,
     status: string,
     location: LocationType
@@ -30,9 +31,9 @@ export  type SetUsersActionType={
 
 let initialState: UsersPropsType = {
     users: [
-        {id: 1, followed: false, fullName: "Dmitriy", status: 'Boss', location: {city: 'Minsk', country: 'Belarus'}},
-        {id: 2, followed: false, fullName: "Sasha", status: 'Boss too', location: {city: 'Moskow', country: 'Russia'}},
-        {id: 3, followed: false, fullName: "Andrew", status: 'Boss too', location: {city: 'Kiev', country: 'Ukraine'}},
+        {id: 1, photoUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn-qGqAcyvbYa_wDNekjmrfHIO7Lpp7rstIA&usqp=CAU', followed: false, fullName: "Dmitriy", status: 'Boss', location: {city: 'Minsk', country: 'Belarus'}},
+        {id: 2, photoUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn-qGqAcyvbYa_wDNekjmrfHIO7Lpp7rstIA&usqp=CAU', followed: false, fullName: "Sasha", status: 'Boss too', location: {city: 'Moskow', country: 'Russia'}},
+        {id: 3, photoUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn-qGqAcyvbYa_wDNekjmrfHIO7Lpp7rstIA&usqp=CAU', followed: false, fullName: "Andrew", status: 'Boss too', location: {city: 'Kiev', country: 'Ukraine'}},
 
 
     ] as Array<UserType>,

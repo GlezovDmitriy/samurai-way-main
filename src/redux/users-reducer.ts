@@ -1,5 +1,4 @@
 import {ActionsTypes,} from "./store";
-import {PostsDataType, PostType, ProfilePageType} from "./types";
 
 type LocationType = {
     city: string,

@@ -9,16 +9,22 @@ import userPhoto from '../../assets/images/user.png'
 export class Users extends React.Component<MyUsersType> {
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                alert('NEW')
-                this.props.setUsers(response.data.items
-                )
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
             })
     }
 
     getUsers = () => {
+    }
+    onPageChanged=(pageNumber:number)=>{
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
 
+            })
     }
 
     render() {
@@ -29,10 +35,10 @@ export class Users extends React.Component<MyUsersType> {
         }
 
         return <div className={s.usersPage}>
-            <div style={{margin:'10px', cursor:'pointer'}}>
+            <div className={s.pageNumbersBtn}>
                 {pages.map(p=>{
-                   return <span className={this.props.currentPage === p ? s.selectedPage: ''}
-                   onClick={()=>{this.props.setCurrentPage(p)}}>
+                   return <span className={this.props.currentPage === p ? s.selectedPage: s.page}
+                   onClick={()=>{this.onPageChanged(p)}}>
                         {p}</span>
                 })}
             </div>

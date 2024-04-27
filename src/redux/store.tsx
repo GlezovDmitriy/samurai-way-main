@@ -2,7 +2,13 @@ import profileReducer, {AddPostActionType, UpdatePostActionType} from "./profile
 import dialogsReducer, {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import {DialogsPageType, ProfilePageType, SidebarType} from "./types";
-import {FollowActionType, SetCurrentPageActionType, SetUsersActionType, UnfollowActionType} from "./users-reducer";
+import {
+    FollowActionType,
+    SetCurrentPageActionType,
+    SetTotalUsersCountActionType,
+    SetUsersActionType,
+    UnfollowActionType
+} from "./users-reducer";
 
 export type StateType = {
     profilePage: ProfilePageType,
@@ -13,7 +19,7 @@ export type StateType = {
 
 export type ActionsTypes = UpdateMessageActionType| AddMessageActionType
 | AddPostActionType | UpdatePostActionType | FollowActionType | UnfollowActionType
-| SetUsersActionType | SetCurrentPageActionType
+| SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType
 export type StoreType = {
     _state: StateType,
     subscribe: (observer: () => void) => void

@@ -1,13 +1,25 @@
-.userPhoto{
+.userPhoto {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-.usersPage{
+
+.usersPage {
     padding-left: 20px;
 }
-.selectedPage{
-    font-weight: bold;
-    margin: 5px;
 
+.selectedPage {
+    font-weight: bold;
+    padding: 3px;
+}
+.page{
+    padding: 3px;
+}
+
+.pageNumbersBtn {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #7cd4e1;
 }

@@ -16,6 +16,7 @@ export const Users = (props: MyUsersType) => {
 
     }
     return <div>
+
         {   // props.users приходит из UsersContainer
             props.users.map(u => <div key={u.id}>
             <span>

@@ -1,7 +1,7 @@
 .app-wrapper {
     margin: 0 auto;
     width: 1200px;
-    background-color: rgba(146, 29, 224, 0.75);
+    background-color: rgba(114, 144, 220, 0.87);
     display: grid;
     grid-template-areas:"h h" "n c";
     grid-template-rows: 60px 1fr;

@@ -1,7 +1,7 @@
 .nav {
     grid-area: n;
-    background-color: #443d2e;
-
+    background-color: rgba(37, 147, 140, 0.87);
+border-radius: 5px;
 
 
 }
@@ -9,6 +9,7 @@
     margin: 20px;
     color: white;
     text-decoration: none;
+    font-size: 25px;
 }
 
 .item a.activeLink {

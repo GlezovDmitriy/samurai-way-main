@@ -1,8 +1,8 @@
 
 .content {
     grid-area: c;
-    background-color: #5fb256;
     width: 1000px;
+    background-color: #99ced7;
 }
 .photo img {
     border-radius: 10px;

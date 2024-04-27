@@ -3,3 +3,11 @@
     height: 50px;
     border-radius: 50%;
 }
+.usersPage{
+    padding-left: 20px;
+}
+.selectedPage{
+    font-weight: bold;
+    margin: 5px;
+
+}

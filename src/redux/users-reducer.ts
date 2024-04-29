@@ -20,7 +20,8 @@ export type UsersPropsType = {
     users: UserType[],
     pageSize: number,
     totalUsersCount: number,
-    currentPage: number
+    currentPage: number,
+    isFetching: boolean
 }
 export type FollowActionType = {
     type: 'FOLLOW',
@@ -42,13 +43,17 @@ export  type SetTotalUsersCountActionType = {
     type: 'SET-TOTAL-USERS-COUNT',
     totalCount:number
 }
-
+export  type isFetchingActionType = {
+    type: 'IS-FETCHING',
+    isFetching: boolean
+}
 
 let initialState: UsersPropsType = {
     users: [] as Array<UserType>,
     pageSize: 100,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 export type InitialStateType = typeof initialState
 export const usersReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
@@ -81,6 +86,9 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
         case 'SET-TOTAL-USERS-COUNT': {
             return {...state, totalUsersCount:action.totalCount}
         }
+        case 'IS-FETCHING': {
+            return {...state,  isFetching:action.isFetching}
+        }
         default:
             return state
     }
@@ -108,5 +116,10 @@ export  const setCurrentPageAC = (currentPage: number):SetCurrentPageActionType=
 export  const setTotalUsersCountAC = (totalCount: number):SetTotalUsersCountActionType=>{
     return {
         type: "SET-TOTAL-USERS-COUNT", totalCount
+    }
+}
+export  const setIsFetchingAC = (isFetching: boolean):isFetchingActionType=> {
+    return {
+        type: "IS-FETCHING", isFetching
     }
 }

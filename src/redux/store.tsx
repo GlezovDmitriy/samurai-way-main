@@ -3,7 +3,7 @@ import dialogsReducer, {AddMessageActionType, UpdateMessageActionType} from "./d
 import sidebarReducer from "./sidebar-reducer";
 import {DialogsPageType, ProfilePageType, SidebarType} from "./types";
 import {
-    FollowActionType,
+    FollowActionType, isFetchingActionType,
     SetCurrentPageActionType,
     SetTotalUsersCountActionType,
     SetUsersActionType,
@@ -19,7 +19,7 @@ export type StateType = {
 
 export type ActionsTypes = UpdateMessageActionType| AddMessageActionType
 | AddPostActionType | UpdatePostActionType | FollowActionType | UnfollowActionType
-| SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType
+| SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType | isFetchingActionType
 export type StoreType = {
     _state: StateType,
     subscribe: (observer: () => void) => void

@@ -1,4 +1,4 @@
-import profileReducer, {AddPostActionType, UpdatePostActionType} from "./profile-reducer";
+import profileReducer, {AddPostActionType, SetUserProfileActionType, UpdatePostActionType} from "./profile-reducer";
 import dialogsReducer, {AddMessageActionType, UpdateMessageActionType} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import {DialogsPageType, ProfilePageType, SidebarType} from "./types";
@@ -20,6 +20,7 @@ export type StateType = {
 export type ActionsTypes = UpdateMessageActionType| AddMessageActionType
 | AddPostActionType | UpdatePostActionType | FollowActionType | UnfollowActionType
 | SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType | isFetchingActionType
+| SetUserProfileActionType
 export type StoreType = {
     _state: StateType,
     subscribe: (observer: () => void) => void
@@ -36,7 +37,8 @@ export const store: StoreType = {
                 {id: 3, message: "How ?", likesCount: 5},
                 {id: 4, message: "you?", likesCount: 4},
             ],
-            newPostText: ''
+            newPostText: '',
+            profile: null
         },
         dialogsPage: {
             dialogsData: [

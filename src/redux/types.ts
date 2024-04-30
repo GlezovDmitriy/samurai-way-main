@@ -7,7 +7,8 @@ export type PostType = {
 export type PostsDataType = PostType[]
 export type ProfilePageType = {
     postsData: PostsDataType,
-    newPostText: string
+    newPostText: string,
+    profile:any
 }
 export type DialogType = {
     id: number,

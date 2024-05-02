@@ -9,7 +9,7 @@ import {StoreReduxType} from "../../redux/redux-store";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {Preloader} from "../common/Preloader/Preloader";
 
-export type ContactsType={
+export type ContactsType = {
     github: string
     vk: string
     facebook: string
@@ -19,8 +19,8 @@ export type ContactsType={
     youtube: string
     mainLink: string
 }
-export type PhotosType={
-    small:string
+export type PhotosType = {
+    small: string
     large: string
 }
 export type ProfileType = {
@@ -32,13 +32,15 @@ export type ProfileType = {
     contacts: ContactsType
     photos: PhotosType
 }
-export const Profile = (props:ProfileType) => {
+export const Profile = (props: ProfileType) => {
     //let state = props.store.getState();
-    if (props.photos.small === null || props.photos.small === undefined) return <Preloader/>
-    debugger
+    //if (props.photos.small === null || props.photos.small === undefined) return <Preloader/>
+
     return (
         <div className={s.content}>
-            <ProfileInfo photo={props.photos.small}/>
+            <ProfileInfo photo={props.photos.small}
+                         contacts={props.contacts}
+                         name={props.fullName}/>
             <Avatar/>
             <MyPostsContainer/>
 

@@ -38,7 +38,7 @@ function App(props: AppType) {
                     />
 
                     {/*render={()=> <Dialogs DialogItemType={} MessageType={}/>}*/}
-                    <Route path='/profile'
+                    <Route path='/profile/:userId?'
                         //component={Profile}
                            render={() => <ProfileContainer/>}/>
                     <Route path='/users'

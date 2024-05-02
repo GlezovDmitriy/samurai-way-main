@@ -6,3 +6,11 @@
     width: 50px;
     border-radius: 5px;
 }
+.loginBlock {
+float: right;
+
+}
+.loginBlock a {
+    color: white;
+    padding-right: 10px;
+}

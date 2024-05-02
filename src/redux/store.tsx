@@ -9,6 +9,7 @@ import {
     SetUsersActionType,
     UnfollowActionType
 } from "./users-reducer";
+import {SetUserDataActionType} from "./auth-reducer";
 
 export type StateType = {
     profilePage: ProfilePageType,
@@ -20,7 +21,7 @@ export type StateType = {
 export type ActionsTypes = UpdateMessageActionType| AddMessageActionType
 | AddPostActionType | UpdatePostActionType | FollowActionType | UnfollowActionType
 | SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType | isFetchingActionType
-| SetUserProfileActionType
+| SetUserProfileActionType | SetUserDataActionType
 export type StoreType = {
     _state: StateType,
     subscribe: (observer: () => void) => void

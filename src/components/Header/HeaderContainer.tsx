@@ -12,9 +12,11 @@ import {ProfileType} from "../Profile/Profile";
 type HeaderContainerPropsType = MapStatePropsType & MapDispatchPropsType
 
 type MapStatePropsType = {
+    isAuth: boolean;
+    login: string | null;
 }
 type MapDispatchPropsType = {
-    setUserDataAC: (id:number, email: string, login: string )=>void
+    setUserDataAC: (id:number, email: string, login: string, isAuth: boolean )=>void
 }
 type PathParamsType = {
     userId: string
@@ -26,17 +28,18 @@ type PropsType = RouteComponentProps<PathParamsType> & HeaderContainerPropsType
             {withCredentials:true})
             .then(response => {
 if (response.data.resultCode === 0){
-    let {id, login, email} = response.data.data
-    this.props.setUserDataAC(id, email, login )
+    let {uid, login, email, isAuth} = response.data.data
+    this.props.setUserDataAC(uid, email, login, isAuth )
 }
 
             })
     }
 
      render (){
-        return<Header /*{...this.props}*//>
+        return<Header {...this.props}/>
     }
 }
-const mapStateToProps = (state: AppStateType): MapStatePropsType=>({})
+const mapStateToProps = (state: AppStateType): MapStatePropsType=>({isAuth: state.auth.isAuth,
+login: state.auth.login})
 let WithRouterDataContainerComponent = withRouter(HeaderContainer)
 export default connect(mapStateToProps, {setUserDataAC})(WithRouterDataContainerComponent)

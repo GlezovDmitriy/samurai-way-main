@@ -9,12 +9,7 @@ export type AuthPropsType = {
 }
 export type SetUserDataActionType = {
     type: 'SET_USER_DATA',
-    data:{
-        id: number | null
-        email: string | null
-        login: string |null
-
-    }
+    data: AuthPropsType
 }
 
 const SET_USER_DATA = 'SET_USER_DATA'

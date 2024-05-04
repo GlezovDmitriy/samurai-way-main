@@ -14,19 +14,18 @@ import React from "react";
 import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
+import {getUsers} from "../../api/api";
 
 export class UsersCont extends React.Component<MyUsersType> {
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-            {
-                withCredentials:true
-            })
-            .then(response => {
+        getUsers(this.props.currentPage, this.props.pageSize) // вынесен запрос в api.tsx как отдельная ф-я
+            .then(data => {
+                debugger
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsersdata.items)
+                this.props.setTotalUsersCount(data.totalCount)
             })
     }
 
@@ -35,13 +34,10 @@ export class UsersCont extends React.Component<MyUsersType> {
     onPageChanged = (pageNumber: number) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-            {
-                withCredentials:true
-        })
-            .then(response => {
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
 
             })
     }

@@ -14,17 +14,18 @@ import React from "react";
 import axios from "axios";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
-import {getUsers} from "../../api/api";
+import {usersAPI} from "../../api/api";
+
 
 export class UsersCont extends React.Component<MyUsersType> {
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        getUsers(this.props.currentPage, this.props.pageSize) // вынесен запрос в api.tsx как отдельная ф-я
-            .then(data => {
-                debugger
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize) // вынесен запрос в api.tsx как метод объекта usersAPI
+            .then(data => {                          // response стат по сути data из api.tsx
+
                 this.props.setIsFetching(false)
-                this.props.setUsersdata.items)
+                this.props.setUsers(data.items)
                 this.props.setTotalUsersCount(data.totalCount)
             })
     }
@@ -34,7 +35,7 @@ export class UsersCont extends React.Component<MyUsersType> {
     onPageChanged = (pageNumber: number) => {
         this.props.setIsFetching(true)
         this.props.setCurrentPage(pageNumber)
-        getUsers(pageNumber, this.props.pageSize)
+        usersAPI.getUsers(pageNumber, this.props.pageSize)  // в api.tsx
             .then(data => {
                 this.props.setIsFetching(false)
                 this.props.setUsers(data.items)

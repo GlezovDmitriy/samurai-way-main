@@ -14,5 +14,11 @@ export const usersAPI = {
             .then(response => {                //возвратит промис только с data объектом, лишнее не нужно
                 return response.data           // в data осн.данные
             })
+    },
+    subscribe(userId: number){
+        return instance.post(`follow/${userId}`)
+    },
+    unsubscribe(userId:number){
+        return instance.delete(`follow/${userId}`)
     }
 }

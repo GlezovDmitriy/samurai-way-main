@@ -22,7 +22,7 @@ export class UsersCont extends React.Component<MyUsersType> {
     componentDidMount() {
         this.props.setIsFetching(true)
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize) // вынесен запрос в api.tsx как метод объекта usersAPI
-            .then(data => {                          // response стат по сути data из api.tsx
+            .then(data => {                          // response стал по сути data из api.tsx
 
                 this.props.setIsFetching(false)
                 this.props.setUsers(data.items)
